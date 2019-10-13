@@ -1,33 +1,39 @@
  
 function makeAjaxCall(){
 
-
+    var formData = serializeObject($('#employeeForm'));
+    var contextRoot = "/" + window.location.pathname.split( '/' )[1];
 	
 	$.ajax({
- 
-		success: function(       ) {
+
+        url: contextRoot + "/add",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(formData),
+        dataType: 'json',
+		success: function(responseJsonObj) {
 			$('#formInput').html("");
 			$("#formInput").append( '<H3 align="center"> New Employee Information <H3>');                
-			$('#formInput').append("<H4 align='center'>First Name:  " +   + "</h4>"  );
-			$('#formInput').append("<H4 align='center'>Last Name: " +   + "</h4>" );
-			$('#formInput').append("<H4 align='center'>Email: " +   + "</h4>");
+			$('#formInput').append("<H4 align='center'>First Name:  " + responseJsonObj.firstName  + "</h4>"  );
+			$('#formInput').append("<H4 align='center'>Last Name: " + responseJsonObj.lastName + "</h4>" );
+			$('#formInput').append("<H4 align='center'>Email: " + responseJsonObj.email + "</h4>");
 			$("#formInput").append('<h4 align="center"> <a href="#" onclick="toggle_visibility(\'formInput\');resetForm(\'employeeForm\');"><b>EXIT</b> </a> </h4>');
 			make_visible('formInput');
 			make_hidden('errors');
 		},
 
-		error: function(        ){	
-			
+		error: function(        ){
 
 
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
 		}
 	
 	});
@@ -39,24 +45,23 @@ toggle_visibility = function(id) {
     	element.style.display = 'none';
     else
     	element.style.display = 'block';
- }	
+ }
 
 make_hidden = function(id) {
     var element = document.getElementById(id);
     element.style.display = 'none';
-        }	   
+        }
 
 make_visible = function(id) {
     var element = document.getElementById(id);
     element.style.display = 'block';
- }	   
+ }
 
 resetForm = function(id) {
     var element = document.getElementById(id);
     $(element)[0].reset();
 
-    }	  
-
+    }
 // Translate form to array
 // Then put in JSON format
  function serializeObject (form)

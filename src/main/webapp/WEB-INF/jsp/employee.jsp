@@ -33,6 +33,7 @@
 		</table>
 	</form>
 		<!-- Success - or Validation errors -->
+
     	<div id="errors" style="display:none" >   	
       	</div>
  
