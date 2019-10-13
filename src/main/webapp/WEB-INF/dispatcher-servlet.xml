@@ -27,7 +27,7 @@
 	</bean>
 
     	<bean id= "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-   		<property name="basenames" value="errorMessages,messages"/> 
+   		<property name="basenames" value="errorMessages,messages"/>
 	</bean>
 	
 	<bean id="messageAccessor" class="org.springframework.context.support.MessageSourceAccessor">

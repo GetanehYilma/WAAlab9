@@ -10,8 +10,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import mum.edu.domain.Employee;
  
-
+@Controller
+@RequestMapping(value = {"/", "/employee"})
 public class EmployeeController {
+
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String displayEmployee(){
+        return "employee";
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public @ResponseBody Employee addEmployee(@Valid @RequestBody Employee employee){
+
+        return employee;
+    }
+
 	
  
 	

@@ -9,11 +9,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Employee  {
 	
  
-
+	@NotEmpty
  	private String firstName;
-	
+
+	@NotEmpty
+	@Size(min=3, max=10, message="{Size.name.validation}")
  	private String lastName;
-	
+
+	@NotEmpty
  	private String email;
 
 	public String getFirstName() {
