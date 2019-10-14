@@ -22,7 +22,30 @@ function makeAjaxCall(){
 			make_hidden('errors');
 		},
 
-		error: function(        ){
+		error: function(jqXHR, status, exception){
+
+            if(jqXHR.responseJSON.errorType == "ValidationError"){
+                $('#errors').html("");
+                $('#errors').append('<h3 style="text-align: center">Errors </h3>');
+                $('#errors').append('<p>');
+
+                    var erorColl = jqXHR.responseJSON.errors;
+                    $.each(erorColl, function (i, error) {
+                        $('#errors').append(error.message + '<br>');
+                        
+                    });
+                $('#errors').append('</p>');
+                $('#errors').show();
+
+            } else {
+                $('#errors').html("");
+                $('#errors').append('<h3 style="text-align: center">Error </h3>');
+                $('#errors').append('<p>');
+                $('#errors').append(jqXHR.responseJSON.error);
+                $('#errors').append('</p>');
+                $('#errors').show();
+
+            }
 
 
 

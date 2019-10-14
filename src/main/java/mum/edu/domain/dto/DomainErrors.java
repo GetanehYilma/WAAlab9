@@ -7,6 +7,7 @@ package mum.edu.domain.dto;
 	 
 	    private String errorType;
 	    private String message;
+		private List<DomainError> errors = new ArrayList<DomainError>();
 
 	    public List<DomainError> getErrors() {
 			return errors;
@@ -15,8 +16,6 @@ package mum.edu.domain.dto;
 		public void setErrors(List<DomainError> errors) {
 			this.errors = errors;
 		}
-
-		private List<DomainError> errors = new ArrayList<DomainError>();
 	 
  	    public void addError(DomainError error) {
  	        errors.add(error);
@@ -32,7 +31,6 @@ package mum.edu.domain.dto;
 		public String getMessage() {
 			return message;
 		}
-
 		public void setMessage(String message) {
 			this.message = message;
 		}
