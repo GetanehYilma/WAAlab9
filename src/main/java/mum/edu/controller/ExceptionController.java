@@ -2,7 +2,6 @@ package mum.edu.controller;
 
 import java.util.List;
 
-import mum.edu.exception.EmployeeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.http.HttpStatus;
@@ -39,17 +38,5 @@ public class ExceptionController {
          return errors;
     }
 
-    @ExceptionHandler(EmployeeException.class)
-    @ResponseStatus((HttpStatus.BAD_REQUEST))
-    public @ResponseBody DomainErrors handleEmployeeException(EmployeeException exception){
 
-         DomainErrors errors = new DomainErrors();
-         errors.setErrorType("EmployeeException");
-         errors.setMessage(exception.getMessage());
-
-         return errors;
-    }
-     
-  
-  
 }
